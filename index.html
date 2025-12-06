@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PadangScan - AI Culinary Recognition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+<header id="header">
+    <div class="header-content">
+        <div class="logo">
+            <div class="logo-icon">
+                <img src="static/logopadang.png" alt="PadangLogo">
+            </div>
+            <div class="logo-text">
+                <h1>PadangScan</h1>
+                <p>Digital Culinary Recognition</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#scan">Scan</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#process">Process</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section id="hero" class="hero">
+    <div class="hero-background"></div>
+    <div class="hero-content">
+        <div class="hero-badge">✨ Teknologi Klasifikasi Modern</div>
+        <h1>
+            Discover The <span class="hero-gradient-text">Authentic</span><br>
+            Taste of Minangkabau
+        </h1>
+        <p>
+            Sistem klasifikasi makanan Padang otomatis yang menggabungkan 
+            teknologi canggih dengan keanggunan desain modern untuk pengalaman kuliner yang tak terlupakan.
+        </p>
+        <div class="hero-cta">
+            <a href="#scan" class="btn btn-primary">
+                Mulai Scan Sekarang →
+            </a>
+            <a href="#features" class="btn btn-secondary">
+                Pelajari Lebih Lanjut
+            </a>
+        </div>
+    </div>
+</section>
+
+<div class="stats">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <h3>99.6%</h3>
+            <p>Akurasi Model</p>
+        </div>
+        <div class="stat-item">
+            <h3>9</h3>
+            <p>Jenis Makanan</p>
+        </div>
+        <div class="stat-item">
+            <h3>&lt;2s</h3>
+            <p>Waktu Prediksi</p>
+        </div>
+        <div class="stat-item">
+            <h3>1K+</h3>
+            <p>Dataset Training</p>
+        </div>
+    </div>
+</div>
+
+<section id="scan" class="scan-section">
+    <div class="section-header">
+        <span class="section-tag">🔍 Klasifikasi Cerdas</span>
+        <h2 class="section-title">Upload & Identifikasi Makanan</h2>
+        <p class="section-description">
+            Unggah foto makanan Padang Anda dan biarkan sistem kami mengidentifikasi 
+            hidangan dengan presisi tinggi dalam hitungan detik.
+        </p>
+    </div>
+
+    <div class="upload-card">
+        <div id="uploadZone" class="upload-zone">
+            <div class="upload-icon">⬆️</div>
+            <h3>Pilih atau seret gambar di sini</h3>
+            <p>PNG / JPG / JPEG — ukuran maksimal 8MB</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                <button type="button" id="openCameraBtn" class="btn btn-primary">
+                    📷 Buka Kamera
+                </button>
+                <button type="button" id="manualUploadBtn" class="btn btn-secondary">
+                    📁 Pilih File
+                </button>
+            </div>
+
+            <input id="fileInput" class="file-input" type="file" accept="image/*">
+            <div id="fileName" style="display:none;"></div>
+        </div>
+
+        <div class="file-preview" id="previewContainer" style="display:none;">
+            <img id="previewImage" src="#" alt="preview">
+            <div style="flex:1;">
+                <div id="previewInfo" style="color:#666;">Preview</div>
+                <div class="upload-controls">
+                    <button id="predictBtn" class="btn btn-primary">Scan</button>
+                    <button id="clearBtn" class="btn btn-secondary">Hapus</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <div>Memproses gambar...</div>
+        </div>
+
+        <div id="resultCard" class="result-card">
+            <div class="result-header">
+                <div>
+                    <div id="resultLabel" class="result-food">-</div>
+                    <div id="resultConfidence" style="color:#666;margin-top:6px">Confidence: -</div>
+                </div>
+            </div>
+            <div id="resultDetails" class="result-details">
+                <div style="font-weight:600;margin-bottom:8px">Top Predictions</div>
+                <div id="resultList" class="result-list"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features-section">
+    <div class="section-header">
+        <span class="section-tag">✨ Keunggulan Sistem</span>
+        <h2 class="section-title">Mengapa Memilih PadangScan?</h2>
+        <p class="section-description">
+            Teknologi terdepan yang dirancang khusus untuk kuliner Nusantara
+        </p>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Algoritma Pembelajaran Mendalam</h3>
+            <p>
+                Menggunakan teknologi neural network terkini yang telah dilatih dengan ribuan gambar 
+                makanan Padang autentik untuk menghasilkan tingkat akurasi prediksi yang sangat tinggi.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Pemrosesan Real-Time</h3>
+            <p>
+                Sistem pemrosesan cepat dengan optimasi backend yang mampu menganalisis gambar 
+                dan memberikan hasil prediksi dalam waktu kurang dari 2 detik dengan tingkat akurasi tinggi.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Privasi Terjamin</h3>
+            <p>
+                Gambar yang Anda upload hanya diproses untuk klasifikasi dan tidak disimpan di server kami. 
+                Keamanan dan privasi data Anda adalah prioritas utama.
+            </p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Responsive Design</h3>
+            <p>
+                Tampilan yang optimal di semua perangkat, baik desktop, tablet, maupun smartphone. 
+                Akses sistem kapan saja dan dimana saja dengan pengalaman yang konsisten.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="process" class="process-section">
+    <div class="section-header">
+        <span class="section-tag">🔄 Cara Kerja</span>
+        <h2 class="section-title">Proses Klasifikasi Sederhana</h2>
+        <p class="section-description">
+            Hanya tiga langkah mudah untuk mendapatkan hasil identifikasi makanan Padang Anda
+        </p>
+    </div>
+
+    <div class="process-timeline">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h3>Upload Foto</h3>
+                <p>
+                    Pilih foto makanan Padang dari galeri Anda atau ambil foto langsung. 
+                    Sistem mendukung format JPG dan PNG dengan ukuran maksimal 5MB untuk hasil optimal.
+                </p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h3>Proses Analisis</h3>
+                <p>
+                    Sistem akan memproses gambar menggunakan model neural network yang telah dilatih. 
+                    Proses ini hanya memakan waktu 1-2 detik untuk mendapatkan hasil yang akurat.
+                </p>
+            </div>
+        </div>
+
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h3>Dapatkan Hasil</h3>
+                <p>
+                    Terima hasil klasifikasi lengkap dengan nama makanan, tingkat kepercayaan sistem, 
+                    dan informasi tambahan tentang hidangan yang teridentifikasi.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="cameraModal" class="camera-modal">
+    <div class="camera-content">
+        <h3 style="color: white; margin-bottom: 1rem;">Ambil Foto Makanan</h3>
+        <video id="cameraFeed" autoplay playsinline></video>
+        <canvas id="cameraCanvas" style="display:none;"></canvas>
+        <div class="camera-controls">
+            <button id="snapBtn" class="btn btn-primary">📸 Ambil Foto</button>
+            <button id="closeCameraBtn" class="btn btn-secondary">Batal</button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <div class="footer-logo">
+                <div class="footer-logo-icon">
+                    <img src="static/logopadang.png" alt="PadangScan Logo" style="width:48px; height:48px; object-fit:contain;">
+                </div>
+                <div class="footer-logo-text">
+                    <h5>PadangScan</h5>
+                    <p>Culinary Recognition</p>
+                </div>
+            </div>
+            <p>
+                Sistem klasifikasi makanan Padang modern yang menggabungkan teknologi canggih 
+                dengan warisan kuliner Minangkabau untuk pengalaman yang tak terlupakan.
+            </p>
+            <span class="footer-badge">Versi 4.0 - Modern Edition</span>
+        </div>
+
+        <div class="footer-section">
+            <h4>Navigasi</h4>
+            <a href="#hero">🏠 Home</a>
+            <a href="#scan">🔍 Scan Makanan</a>
+            <a href="#features">✨ Fitur Unggulan</a>
+            <a href="#process">🔄 Cara Kerja</a>
+        </div>
+
+        <div class="footer-section">
+            <h4>Informasi</h4>
+            <a href="#">📖 Tentang Kami</a>
+            <a href="#">📚 Dokumentasi</a>
+            <a href="#">❓ FAQ</a>
+            <a href="#">📧 Kontak</a>
+        </div>
+
+        <div class="footer-section">
+            <h4>Makanan yang Dikenali</h4>
+            <div class="food-tags">
+                <span class="food-tag">Ayam Goreng</span>
+                <span class="food-tag">Ayam Pop</span>
+                <span class="food-tag">Daging Rendang</span>
+                <span class="food-tag">Dendeng Batokok</span>
+                <span class="food-tag">Gulai Ikan</span>
+                <span class="food-tag">Gulai Tambusu</span>
+                <span class="food-tag">Gulai Tunjang</span>
+                <span class="food-tag">Telur Balado</span>
+                <span class="food-tag">Telur Dadar</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 PadangScan Project. All Rights Reserved.</p>
+        <p>
+            Dikembangkan dengan <span class="highlight">❤️</span> oleh 
+            <strong>Muhammad Rausyanfikry Hablillah, Putri Amelia Kresna, Salim Aziz Setiawan Apandi</strong>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">
+            *Sistem menggunakan simulasi untuk tujuan demonstrasi dan pembelajaran
+        </p>
+    </div>
+</footer>
+
+<script src="static/script.js"></script>
+
+</body>
+</html>
